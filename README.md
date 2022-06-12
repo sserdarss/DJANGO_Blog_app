@@ -1,1 +1,1 @@
-# DJANGO_Blog_app
+# BLOG-

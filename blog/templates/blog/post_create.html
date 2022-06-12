@@ -1,0 +1,22 @@
+{% extends 'base.html' %} 
+
+{% block content %} 
+
+<h2>Post Creation Form</h2>
+<br>
+
+<h3>Enter your post below</h3>
+<br>
+
+
+
+<form action="" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ post_user.as_p }}
+ 
+  <button type="submit" class="btn btn-danger">SEND</button>
+  <hr>
+</form>
+
+
+{% endblock content %}

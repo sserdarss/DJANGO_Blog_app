@@ -1,0 +1,44 @@
+
+{% extends 'base.html' %} 
+{% load static %}
+{% block content %} 
+
+
+<h2>POSTS</h2>
+
+
+<div class="row">
+{% for values in posts %}
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <img class="card-img-top" src="{% static project.image %}">
+            <h3>{{ values.user }}</h3>
+            <div class="card-body">
+                <h5 class="card-title"> <a href="{% url 'detail' values.slug %}">{{ values.title }}</a> </h5>
+                <p class="card-text">{{ values.content }}</p>
+                {{ values.created_at | timesince }} 
+                {{ values.like_count }} Likes
+                
+            </div>
+        </div>
+    </div>
+    {% comment %} <form action="{% url 'blog:like' object.slug %}" method="POST">
+
+        {% csrf_token %}
+        <input type="hidden" name="post">
+        <input type="hidden" name="user">
+
+
+        <button type="submit"><i class="far fa-heart fa-lg"></i></button>
+        {{ values.like_count }}
+    </form> {% endcomment %}
+
+    
+    {% endfor %}
+
+</div>
+
+
+
+
+{% endblock content %} 
